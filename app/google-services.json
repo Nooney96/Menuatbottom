@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "633576391548",
+    "firebase_url": "https://fir-loginmoneyapp.firebaseio.com",
+    "project_id": "fir-loginmoneyapp",
+    "storage_bucket": "fir-loginmoneyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633576391548:android:076529464841eb70",
+        "android_client_info": {
+          "package_name": "rossnoonan.menuatbottom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633576391548-l6t3eforbs71o7akhjdhmid99cnir8ca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrh8-LB5eom0WQ9vGZtWzzl1BYWiMABKc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
