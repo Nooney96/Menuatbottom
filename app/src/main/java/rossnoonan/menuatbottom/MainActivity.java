@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         notifcationFragment = new NotifcationFragment();
         whatsappFragment = new WhatsappFragment();
 
+       // bottomNavigation.setDefaultBackgroundColor(Color.WHITE);
+        //bottomNavigation.setAccentColor(fetchColor(R.color.AccentColor));
+        //bottomNavigation.setInactiveColor(fetchColor(R.color.yourInactiveColor));
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

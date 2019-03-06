@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import rossnoonan.menuatbottom.graphs.Main_graph_activity;
+import rossnoonan.menuatbottom.groupandbills.AddGrouptwo;
+import rossnoonan.menuatbottom.main.SendBirdLoginActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,11 +37,11 @@ public class DashboardFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        Button btnOpenGroup = (Button) view.findViewById(R.id.btnCreateGroup);
+        Button btnOpenGroup = (Button) view.findViewById(R.id.btnCreateChat);
         btnOpenGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), MainGroupActivity.class);
+                Intent in = new Intent(getActivity(), SendBirdLoginActivity.class);
                 startActivity(in);
             }
         });
@@ -51,10 +55,10 @@ public class DashboardFragment extends Fragment {
         });
 
         Button btnOpenBills = (Button) view.findViewById(R.id.btnCreateBill);
-        btnOpenBills.setOnClickListener(new View.OnClickListener() {
+       btnOpenBills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), MainBillActivity.class);
+                Intent in = new Intent(getActivity(), AddGrouptwo.class);
                 startActivity(in);
             }
         });
@@ -62,10 +66,10 @@ public class DashboardFragment extends Fragment {
         btnOpenGraphss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), MainGraphActivityBills.class);
+               Intent in = new Intent(getActivity(), Main_graph_activity.class);
                 startActivity(in);
             }
-        });
+       });
 
 
         return view;

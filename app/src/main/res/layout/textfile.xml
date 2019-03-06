@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:drawable/screen_background_light_transparent"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:id="@+id/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="163dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dip">
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="121dp"
+            android:layout_height="wrap_content"
+            android:text="note"
+            android:textColor="@android:color/black"
+            android:textSize="20dip"
+            android:textStyle="italic" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="100dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/amount"
+        android:layout_marginStart="39dp"
+        android:text="name"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20dip" />
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="38dp"
+        android:layout_marginTop="49dp"
+        android:padding="5dp"
+        android:text="amount"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/txtnameinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_above="@+id/amount"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-48dp"
+        android:layout_marginStart="23dp"
+        android:text="Name of Bill Owner"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dip" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:text="Note For Bill"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dip" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/txtnameinfo"
+        android:layout_toEndOf="@+id/textView2"
+        android:text="Bill Amount"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20dip" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/name"
+        android:layout_alignEnd="@+id/textView2"
+        android:text="£"
+        android:textColor="@android:color/black" />
+</RelativeLayout>

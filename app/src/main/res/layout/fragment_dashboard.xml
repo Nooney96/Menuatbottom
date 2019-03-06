@@ -12,57 +12,50 @@
         android:background="#2a1351">
         <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:id="@+id/title_dashboard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="Dash Board" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="94dp"
-            android:layout_height="86dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="33dp"
-            android:src="@android:drawable/ic_lock_lock" />
+            android:layout_alignParentTop="true" />
 
         <Button
-            android:id="@+id/btnCreateGroup"
-            android:layout_width="196dp"
-            android:layout_height="166dp"
-            android:layout_above="@+id/btnCreateBill"
+            android:id="@+id/btnCreateChat"
+            android:layout_width="202dp"
+            android:layout_height="202dp"
             android:layout_alignParentStart="true"
-            android:background="#368181"
-            android:text="Create Group" />
+            android:layout_alignTop="@+id/btnGraphsNav"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#368181"
+            android:text="Create Chat" />
 
         <Button
             android:id="@+id/btnGraphsNav"
-            android:layout_width="190dp"
-            android:layout_height="166dp"
+            android:layout_width="209dp"
+            android:layout_height="202dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/btnCreateGroup"
-            android:background="#368181"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="205dp"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#368181"
             android:text="Graphs" />
 
         <Button
             android:id="@+id/btnAboutUs"
-            android:layout_width="190dp"
-            android:layout_height="162dp"
-            android:layout_alignStart="@+id/btnGraphsNav"
+            android:layout_width="209dp"
+            android:layout_height="204dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/btnCreateBill"
-            android:layout_marginStart="0dp"
-            android:background="#368181"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#368181"
             android:text="About Us" />
 
         <Button
             android:id="@+id/btnCreateBill"
-            android:layout_width="196dp"
-            android:layout_height="162dp"
-            android:layout_alignParentBottom="true"
+            android:layout_width="202dp"
+            android:layout_height="204dp"
             android:layout_alignParentStart="true"
-            android:background="#368181"
+            android:layout_below="@+id/btnCreateChat"
+            android:background="@drawable/buttonshape"
+            android:backgroundTint="#368181"
             android:text="Create New Bill" />
 
     </RelativeLayout>

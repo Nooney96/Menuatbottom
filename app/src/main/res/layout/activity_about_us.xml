@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="147dp"
-        android:text="This application is a group money mangement application"
+        android:text="This application is a group money management application"
         android:textAlignment="center" />
 
     <TextView
@@ -42,8 +42,7 @@
         android:layout_height="86dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="173dp"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        android:layout_marginBottom="173dp" />
 
     <TextView
         android:id="@+id/txtInfo3"

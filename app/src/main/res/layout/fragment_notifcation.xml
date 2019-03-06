@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NotifcationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Notifcation Fragment" />
+        android:background="#2a1351">
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Notifcation Fragment" />
 
+        <ImageButton
+            android:id="@+id/Paypalbutton"
+            android:layout_width="172dp"
+            android:layout_height="170dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="227dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/buttonshape"
+            android:cropToPadding="true"
+            android:onClick="philip"
+            android:scaleType="centerCrop"
+            android:src="@drawable/paypal_logo" />
+
+
+    </RelativeLayout>
 </FrameLayout>

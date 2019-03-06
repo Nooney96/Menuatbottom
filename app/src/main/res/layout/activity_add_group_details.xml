@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2a1351"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".groupandbills.AddGroupDetailsTwo">
+
+    <EditText
+        android:id="@+id/Textgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:digits="_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:hint="Enter Group Name"
+        android:inputType="textFilter|textMultiLine"
+        android:maxLength="12"
+        android:nextFocusDown="@+id/.."
+        android:textColor="#ffffff"
+        android:textColorHint="@color/white"
+        android:textCursorDrawable="@drawable/cursorcolor" />
+
+    <EditText
+        android:id="@+id/editno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Textgroup"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:hint="Enter Number of participants"
+        android:inputType="number"
+        android:maxLength="2"
+        android:nextFocusDown="@+id/.."
+        android:textColor="#ffffff"
+        android:textColorHint="@android:color/white"
+        android:textCursorDrawable="@drawable/cursorcolor" />
+
+    <EditText
+        android:id="@+id/friend_name"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/add_btn"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:digits="_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        android:hint="Enter Participant Name"
+        android:inputType="textFilter|textMultiLine"
+        android:maxLength="12"
+        android:nextFocusDown="@+id/.."
+        android:textColor="#ffffff"
+        android:textColorHint="@color/white"
+        android:textCursorDrawable="@drawable/cursorcolor" />
+
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginBottom="109dp"
+
+        android:background="@drawable/buttonshape"
+        android:text="ADD"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:id="@+id/daye"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/daypickbut"
+        android:layout_centerHorizontal="true"
+        android:hint="Select Date"
+        android:text="Select Date"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="22dp" />
+
+
+    <Button
+        android:id="@+id/daypickbut"
+        android:layout_width="72dp"
+        android:layout_height="43dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/buttonshape"
+        android:text="Date"
+        android:textColor="#ffffff" />
+
+    <Button
+
+        android:id="@+id/button_SUBMIT"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginBottom="42dp"
+        android:background="@drawable/buttonshape"
+        android:text="SUBMIT"
+
+        android:textColor="#FFFFFF"
+        android:textSize="23sp" />
+
+</RelativeLayout>

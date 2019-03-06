@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import rossnoonan.menuatbottom.graphs.Main_graph_activity;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +33,7 @@ public class GraphFragment extends Fragment {
         btnOpenGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), MainGraphActivityBills.class);
+                Intent in = new Intent(getActivity(), Main_graph_activity.class);
                 startActivity(in);
             }
         });
