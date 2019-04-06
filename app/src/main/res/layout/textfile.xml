@@ -20,7 +20,7 @@
             android:layout_width="121dp"
             android:layout_height="wrap_content"
             android:text="note"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             android:textSize="20dip"
             android:textStyle="italic" />
 
@@ -36,7 +36,7 @@
         android:layout_marginStart="39dp"
         android:text="name"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="20dip" />
 
     <TextView
@@ -49,7 +49,7 @@
         android:layout_marginTop="49dp"
         android:padding="5dp"
         android:text="amount"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/white" />
 
     <TextView
         android:id="@+id/txtnameinfo"
@@ -60,7 +60,7 @@
         android:layout_marginBottom="-48dp"
         android:layout_marginStart="23dp"
         android:text="Name of Bill Owner"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/white"
         android:textSize="20dip" />
 
     <TextView
@@ -71,7 +71,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:text="Note For Bill"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/white"
         android:textSize="20dip" />
 
     <TextView
@@ -81,7 +81,7 @@
         android:layout_alignTop="@+id/txtnameinfo"
         android:layout_toEndOf="@+id/textView2"
         android:text="Bill Amount"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/white"
         android:textSize="20dip" />
 
     <TextView
@@ -91,5 +91,5 @@
         android:layout_alignBaseline="@+id/name"
         android:layout_alignEnd="@+id/textView2"
         android:text="£"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/white" />
 </RelativeLayout>

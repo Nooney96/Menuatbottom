@@ -9,8 +9,10 @@
         android:layout_width="175dp"
         android:layout_height="55dp"
         android:gravity="center"
+        android:hint="@color/btn_create"
         android:text="name"
         android:textColor="@color/btn_create"
+        android:textColorHint="@color/btn_create"
         android:textSize="20dp" />
 
     <TextView
@@ -21,7 +23,8 @@
         android:layout_toRightOf="@+id/name"
         android:gravity="center"
         android:text="amount"
-        android:textColor="@color/btn_create" />
+        android:textColor="@color/btn_create"
+        android:textColorHint="@color/btn_create" />
 
     <View
         android:layout_width="match_parent"

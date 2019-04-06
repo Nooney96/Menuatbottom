@@ -265,7 +265,4 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
-

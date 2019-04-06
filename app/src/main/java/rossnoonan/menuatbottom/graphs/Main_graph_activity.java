@@ -9,17 +9,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -34,13 +29,14 @@ import java.util.List;
 import java.util.Vector;
 
 import rossnoonan.menuatbottom.R;
-import rossnoonan.menuatbottom.groupandbills.ViewBillDetails;
 import rossnoonan.menuatbottom.groupandbills.add_adapter;
 import rossnoonan.menuatbottom.groupandbills.additem;
+import rossnoonan.menuatbottom.groupandbills.balance_adapter;
+//import rossnoonan.testtwentytwo.graph_adapter;
 
 public class Main_graph_activity extends AppCompatActivity {
 
-PieChart pieChart;
+    PieChart pieChart;
 
     Long k;
     int j;
@@ -55,11 +51,17 @@ PieChart pieChart;
     Vector<Integer> vec = new Vector<>();
     int count=0;
     add_adapter adapter;
+    //graph_adapter adaptergraphdata;
+    balance_adapter adapter_balance;
     List<additem> niitemlist;
     ArrayAdapter adapter1;
     ListView listView;
     ListView listView1;
+    private ArrayList<PieEntry> yValues;
+    String p;
 
+    //this is to check the logs for hidden information
+    // Log.d("ROSS", "D4:"+ d4 + "--- " + d1);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,33 +86,34 @@ PieChart pieChart;
         pieChart.setDragDecelerationFrictionCoef(0.15f);
 
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setHoleColor(Color.WHITE);
-        pieChart.setTransparentCircleRadius(61f);
+        pieChart.setEntryLabelColor(Color.BLACK);
+        pieChart.setHoleColor(Color.TRANSPARENT);
+        pieChart.setTransparentCircleRadius(50f);
 
-        ArrayList<PieEntry> yValues = new ArrayList<>();
+        yValues = new ArrayList<>();
+        //  yValues.add(new PieEntry(66, "bill"));
+        //yValues.add(new PieEntry(45, "sam"));
+        // yValues.add(new PieEntry(54, "julie"));
 
-        yValues.add(new PieEntry(34f, "bang"));
-        yValues.add(new PieEntry(23f, "USA"));
-        yValues.add(new PieEntry(14f, "UK"));
-        yValues.add(new PieEntry(30, "India"));
-        yValues.add(new PieEntry(40, "Russia"));
-        yValues.add(new PieEntry(23, "Japan"));
+        plotter();
 
-       // Description description = new Description();
+        // Description description = new Description();
         //description.setText(" This graph shows all bills");
         //description.setTextSize(15);
         //pieChart.setDescription(description);
 
         pieChart.animateY(1000, Easing.EasingOption.EaseInOutCubic);
 
-        PieDataSet dataSet = new PieDataSet(yValues, ": Countries");
+        PieDataSet dataSet = new PieDataSet(yValues, ": Names");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setColors(ColorTemplate.VORDIPLOM_COLORS);
+
 
         PieData data = new PieData((dataSet));
         data.setValueTextSize(20f);
-        data.setValueTextColor(Color.YELLOW);
+        data.setValueTextColor(Color.BLACK);
+
 
         pieChart.setData(data);
 
@@ -121,23 +124,51 @@ PieChart pieChart;
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         TextView temp = (TextView) view.findViewById(R.id.name);
                         String str = temp.getText().toString();
-                        Intent intent = new Intent(getApplicationContext(), ViewBillDetails.class);
-                        intent.putExtra("id", str);
-                        startActivity(intent);
+                        Intent in = new Intent(getApplicationContext(), Main_graph_activity.class);
+                        in.putExtra("id", str);
+                        startActivity(in);
                         finish();
+
                     }
                 }
         );
 
 
 
-
-
-
-
-
     }
-    //function to fill up the activity with trip details from data base create trip.db
+
+    //method to populate graph
+    public void plotter() {
+
+
+        dbgroup=openOrCreateDatabase("grouptwo.db", Context.MODE_PRIVATE, null);
+        dbgroup.execSQL("create table if not exists friend " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,friend_name TEXT,note TEXT,amount TEXT)");
+        Cursor c = dbgroup.rawQuery("SELECT * FROM testerkings" + ";", null);
+        if (c != null) {
+            int i = 0;
+            if (c.moveToFirst()) {
+                do {
+                    //create list view from table group_name
+                    String d2 = c.getString(c.getColumnIndex("friend_name"));
+                    String d1 = c.getString(c.getColumnIndex("note"));
+                    String d4 = c.getString(c.getColumnIndex("amount"));
+                    vec.add(1);
+                   // Log.d("ROSS", "*"+ ";");
+                    Log.d("ROSS", "D4:"+ d4 + "--- " + d1);
+                    yValues.add(new PieEntry(Integer.parseInt(d4), d1));
+
+                    //add to chart...
+
+                } while (c.moveToNext());
+
+            }
+
+            pieChart.getData();
+        }
+    }
+
+
+    //function to fill up the activitys list view to show groups to click
     void fillActivity() {
         dbgroup = openOrCreateDatabase("grouptwo.db", Context.MODE_PRIVATE, null);
         niitemlist = new ArrayList<>();
@@ -164,90 +195,19 @@ PieChart pieChart;
         listView.setAdapter(adapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 
-        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
-                if (vec.get(i) == 0) {
-                    // if(list_items.contains(niitemlist.get(i))) {
-                    list_item.remove(niitemlist.get(i));
-                    count -= 1;
-                    listView.getChildAt(i).setBackgroundColor(Color.WHITE);
-
-                    vec.set(i, 1);
-                    //c.setSelected(true);
-                    //convertView.setPressed(true);
-                    String ii = Integer.toString(i);
-                    Log.e("not select", ii);
-
-                    actionMode.setTitle(count + " items selected");
-                } else {
-                    count += 1;
-                    listView.getChildAt(i).setBackgroundColor(Color.LTGRAY);
-
-                    vec.set(i, 0);
-                    String ii = Integer.toString(i);
-                    Log.e("select", ii);
-                    //   nlist.add(niitemlist.get(i));
-
-                    actionMode.setTitle(count + " items selected");
-                    // list_items.add(niitemlist.get(i));
-                }
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
-                MenuInflater inflater = actionMode.getMenuInflater();
-                inflater.inflate(R.menu.my_context_menu, menu);
-
-                return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-                Log.e("1", "enter switch");
-
-                switch (menuItem.getItemId()) {
-                    case R.id.delete_id:
-                        for (int i = vec.size() - 1; i > -1; i--) {
-                            if (vec.get(i) == 0) {
-                                String name = niitemlist.get(i).getName();
-                                String amount = niitemlist.get(i).getDate();
-                                vec.set(i, 1);
-                                listView.getChildAt(i).setBackgroundColor(Color.WHITE);
-                                final String TABLE_NAME = "Group_details";
-                                final String NOTE = "note";
-                                Log.e("table name", TABLE_NAME);
-                                dbgroup.execSQL("DELETE FROM" + TABLE_NAME + "WHERE group_name='" + name + "'");
-                                String tbl = "f" + name;
-                                dbgroup.execSQL("DROP TABLE IF EXISTS'" + tbl + "';");
-                                dbgroup.execSQL("DROP TABLE IF EXISTS'" + name + "';");
-                                niitemlist.remove(i);
-                            }
-                        }
-                        adapter.notifyDataSetChanged();
-                        Toast.makeText(getApplicationContext(), count + " items removed ", Toast.LENGTH_SHORT).show();
-                        count = 0;
-                        actionMode.finish();
-                        return true;
-                    default:
-                        return false;
-
-                }
-
-
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode actionMode) {
-
-            }
-        });
     }
+
+
+
+
+
+
+
+
+
+
+
+
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -259,4 +219,3 @@ PieChart pieChart;
 
 
 }
-

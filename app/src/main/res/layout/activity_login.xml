@@ -12,12 +12,14 @@
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:padding="@dimen/activity_horizontal_margin"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
 
         <ImageView
-            android:layout_width="@dimen/logo_w_h"
-            android:layout_height="@dimen/logo_w_h"
+            android:layout_width="160dp"
+            android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
             android:contentDescription=""
@@ -34,7 +36,6 @@
             android:inputType="textEmailAddress"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
-
 
 
         <EditText

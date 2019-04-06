@@ -109,6 +109,8 @@ public class Fragment_show extends Fragment {
                     vec.add(1);
                     niitemlist.add(new item(d1,d4,d2));
 
+                    //add to chart...
+
                 } while (c.moveToNext());
             }
         }

@@ -41,7 +41,7 @@ import rossnoonan.menuatbottom.utils.TypingIndicator;
 /**
  * Displays a list of Group Channels within a SendBird application.
  */
-class GroupChannelListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class GroupChannelListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private List<GroupChannel> mChannelList;
     private Context mContext;
@@ -74,7 +74,7 @@ class GroupChannelListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mChannelList = new ArrayList<>();
     }
 
-    void clearMap() {
+    public void clearMap() {
         mSimpleTargetIndexMap.clear();
         mSimpleTargetGroupChannelMap.clear();
         mChannelImageNumMap.clear();

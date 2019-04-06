@@ -72,7 +72,7 @@ public class Update extends AppCompatActivity {
         Intent intent=new Intent(getApplicationContext(),ViewBillDetails.class);
         intent.putExtra("id",p);
         startActivity(intent);
-        finish();
+
 
     }
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -87,7 +87,7 @@ public class AddGrouptwo extends AppCompatActivity {
 
     }
 
-    //function to fill up the activity with trip details from data base create trip.db
+    //function is used to fill the activity with group details from database create grouptwo.db
     void fillActivity() {
         dbgroup = openOrCreateDatabase("grouptwo.db", Context.MODE_PRIVATE, null);
         niitemlist = new ArrayList<>();
@@ -118,14 +118,11 @@ public class AddGrouptwo extends AppCompatActivity {
             @Override
             public void onItemCheckedStateChanged(ActionMode actionMode, int i, long l, boolean b) {
                 if (vec.get(i) == 0) {
-                    // if(list_items.contains(niitemlist.get(i))) {
                     list_item.remove(niitemlist.get(i));
                     count -= 1;
                     listView.getChildAt(i).setBackgroundColor(Color.WHITE);
 
                     vec.set(i, 1);
-                    //c.setSelected(true);
-                    //convertView.setPressed(true);
                     String ii = Integer.toString(i);
                     Log.e("not select", ii);
 
@@ -137,10 +134,9 @@ public class AddGrouptwo extends AppCompatActivity {
                     vec.set(i, 0);
                     String ii = Integer.toString(i);
                     Log.e("select", ii);
-                    //   nlist.add(niitemlist.get(i));
+
 
                     actionMode.setTitle(count + " items selected");
-                    // list_items.add(niitemlist.get(i));
                 }
             }
 
@@ -198,7 +194,7 @@ public class AddGrouptwo extends AppCompatActivity {
             }
         });
     }
-    //when clicked on floating action button
+    //when user clicks on the floating action button
     public void opennewwindow(){
         fb.setOnClickListener(
                 new View.OnClickListener() {
@@ -220,13 +216,4 @@ public class AddGrouptwo extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
-
-
-
 }

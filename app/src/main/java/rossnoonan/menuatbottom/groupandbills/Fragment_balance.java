@@ -98,15 +98,6 @@ public class Fragment_balance extends Fragment {
         }
 
 
-
-       // Collections.sort(list, new Comparator<calculate>() {
-           // @Override
-           // public int compare(calculate fruit2, calculate fruit1)
-           // {
-               // return Double.compare(fruit2.money, fruit1.money);
-           // }
-       // });
-
         double avg=0.0;
         for(calculate p :list)
         {
@@ -127,7 +118,7 @@ public class Fragment_balance extends Fragment {
             Log.e(p.name, String.valueOf(p.money));
         }
 
-        //update the second list for sorting out who owes whom and how much money
+        //update the second list for sorting out who owes who and how much money
 
         int j=list.size()-1;
         i=0;
@@ -152,8 +143,10 @@ public class Fragment_balance extends Fragment {
                 j--;
             }
         }
-        adapter2=new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,list_ball);
+        adapter2=new ArrayAdapter<String>(getActivity(),R.layout.simple_text_list_test,list_ball);
         list_b.setAdapter(adapter2);
+
+
 
         return view;
     }

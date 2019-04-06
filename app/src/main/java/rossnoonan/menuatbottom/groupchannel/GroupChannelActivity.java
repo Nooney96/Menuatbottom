@@ -79,7 +79,7 @@ public class GroupChannelActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    void setActionBarTitle(String title) {
+    public void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
         }

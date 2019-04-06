@@ -33,10 +33,11 @@
         android:layout_below="@+id/txtbal">
 
     </View>
+
     <ListView
         android:id="@+id/list_below"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtbal">
-    </ListView>
+        android:layout_below="@+id/txtbal"
+        android:cacheColorHint="@color/btn_create"></ListView>
 </RelativeLayout>

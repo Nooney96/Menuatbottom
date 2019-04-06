@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotifcationFragment">
+    tools:context=".PaypalMoneyPoolFragment">
 
 
     <RelativeLayout
@@ -17,19 +17,13 @@
             android:layout_height="match_parent"
             android:text="Notifcation Fragment" />
 
-        <ImageButton
-            android:id="@+id/Paypalbutton"
-            android:layout_width="172dp"
-            android:layout_height="170dp"
-            android:layout_alignParentTop="true"
+        <WebView
+            android:id="@+id/webView1"
+            android:layout_width="371dp"
+            android:layout_height="468dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="227dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/buttonshape"
-            android:cropToPadding="true"
-            android:onClick="philip"
-            android:scaleType="centerCrop"
-            android:src="@drawable/paypal_logo" />
+            android:layout_marginBottom="53dp" />
 
 
     </RelativeLayout>

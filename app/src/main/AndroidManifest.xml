@@ -30,7 +30,8 @@
         </activity>
 
         <activity
-            android:name=".main.SendBirdMainActivity"
+            android:name="main.SendBirdMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/app_name">
 
         </activity>
@@ -60,9 +61,12 @@
 
         <activity
             android:name="groupchannel.CreateGroupChannelActivity"
-            android:label="@string/create_group_channel" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/create_group_channel">
+        </activity>
 
-        <activity android:name=".groupchannel.CreateGroupChannelActivity">
+        <activity android:name=".groupchannel.CreateGroupChannelActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -70,7 +74,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".groupchannel.InviteMemberActivity">
+        <activity android:name=".groupchannel.InviteMemberActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/invite_member">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -79,40 +85,66 @@
         </activity>
 
 
-        <activity android:name="main.SendBirdMainActivity"
-            android:label="@string/select_channel_type"/>
-        <activity
-            android:name="main.SendBirdSettingsActivity"
-            android:label="@string/settings" />
-        <activity
-            android:name="main.BlockedMembersListActivity"
-            android:label="@string/blocked_members_list" />
+        <activity android:name=".main.SendBirdMainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/select_channel_type">
+    </activity>
 
-        <activity android:name="utils.PhotoViewerActivity" />
+
+
         <activity
-            android:name="utils.MediaPlayerActivity"
-            android:configChanges="orientation|screenSize" />
+            android:name=".main.BlockedMembersListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/blocked_members_list">
+        </activity>
+
         <activity
-            android:name="openchannel.CreateOpenChannelActivity"
+            android:name=".utils.PhotoViewerActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".utils.MediaPlayerActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".openchannel.CreateOpenChannelActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/create_open_channel"
-            android:windowSoftInputMode="stateVisible" />
-        <activity
-            android:name="groupchannel.InviteMemberActivity"
-            android:label="@string/invite_member" />
+            android:windowSoftInputMode="stateVisible"/>
+
+
+
         <activity
             android:name=".groupchannel.MemberListActivity"
-            android:label="@string/member_list" />
-        <activity
-            android:name=".groupchannel.MemberInfoActivity"
-            android:label="@string/member_info" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/member_list">
+        </activity>
 
         <activity
-            android:name="openchannel.ParticipantListActivity"
-            android:label="@string/participant_list" />
-        <activity android:name="openchannel.OpenChannelActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:name=".groupchannel.MemberInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/member_info">
+        </activity>
+
+        <activity
+            android:name=".openchannel.ParticipantListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/participant_list">
+        </activity>
+
+        <activity android:name=".openchannel.OpenChannelActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
+
+
         <activity android:name=".groupchannel.GroupChannelActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
 
 
         <activity android:name=".groupandbills.AddGroupDetailsTwo">
@@ -122,6 +154,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".main.SendBirdSettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="@string/settings"/>
+
 
 
         <activity android:name=".groupandbills.AddGrouptwo">

@@ -19,44 +19,52 @@
 
         <Button
             android:id="@+id/btnCreateChat"
-            android:layout_width="202dp"
-            android:layout_height="202dp"
-            android:layout_alignParentStart="true"
+            android:layout_width="176dp"
+            android:layout_height="182dp"
+            android:layout_alignStart="@+id/btnCreateBill"
             android:layout_alignTop="@+id/btnGraphsNav"
-            android:background="@drawable/buttonshape"
-            android:backgroundTint="#368181"
-            android:text="Create Chat" />
+            android:background="@drawable/button_shape"
+
+            android:text="Create Chat"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnGraphsNav"
-            android:layout_width="209dp"
-            android:layout_height="202dp"
-            android:layout_alignParentEnd="true"
+            android:layout_width="176dp"
+            android:layout_height="182dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="205dp"
-            android:background="@drawable/buttonshape"
-            android:backgroundTint="#368181"
-            android:text="Graphs" />
+            android:layout_alignStart="@+id/btnAboutUs"
+            android:layout_marginTop="226dp"
+            android:background="@drawable/button_shape"
+            android:text="Graphs"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnAboutUs"
-            android:layout_width="209dp"
-            android:layout_height="204dp"
+            android:layout_width="176dp"
+            android:layout_height="182dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/btnCreateBill"
-            android:background="@drawable/buttonshape"
-            android:backgroundTint="#368181"
-            android:text="About Us" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="90dp"
+            android:background="@drawable/button_shape"
+            android:text="About Us"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnCreateBill"
-            android:layout_width="202dp"
-            android:layout_height="204dp"
+            android:layout_width="176dp"
+            android:layout_height="182dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/btnCreateChat"
-            android:background="@drawable/buttonshape"
-            android:backgroundTint="#368181"
-            android:text="Create New Bill" />
+            android:layout_alignTop="@+id/btnAboutUs"
+            android:layout_marginStart="14dp"
+            android:background="@drawable/button_shape"
+            android:text="Create New Bill"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </FrameLayout>

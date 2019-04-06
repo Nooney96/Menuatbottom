@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout mMainFrame;
 
     private GraphFragment graphFragment;
-    private NotifcationFragment notifcationFragment;
+    private PaypalMoneyPoolFragment paypalMoneyPoolFragment;
     private DashboardFragment dashboardFragment;
     private WhatsappFragment whatsappFragment;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         graphFragment = new GraphFragment();
         dashboardFragment = new DashboardFragment();
-        notifcationFragment = new NotifcationFragment();
+        paypalMoneyPoolFragment = new PaypalMoneyPoolFragment();
         whatsappFragment = new WhatsappFragment();
 
        // bottomNavigation.setDefaultBackgroundColor(Color.WHITE);
@@ -46,23 +46,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        // mTextMessage.setText(R.string.title_home);
-                        setFragment(graphFragment);
-                        return true;
                     case R.id.navigation_dashboard:
                         // mTextMessage.setText(R.string.title_dashboard);
                         setFragment(dashboardFragment);
 
                         return true;
-                    case R.id.navigation_notifications:
+                    case R.id.navigation_paypal:
                         // mTextMessage.setText(R.string.title_notifications);
-                        setFragment(notifcationFragment);
+                        setFragment(paypalMoneyPoolFragment);
 
-                        return true;
-                    case R.id.navigation_whatsapp:
-                        // mTextMessage.setText(R.string.title_whatsapp);
-                        setFragment(whatsappFragment);
                         return true;
 
                     default:

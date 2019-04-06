@@ -17,11 +17,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import rossnoonan.menuatbottom.MainActivity;
 import rossnoonan.menuatbottom.R;
 
 public class MainLoginActivity extends AppCompatActivity {
 
-    private Button btnChangePassword, btnRemoveUser,
+    private Button btnChangePassword,btncontinuetoapp, btnRemoveUser,
             changePassword, remove, signOut;
     private TextView email;
 
@@ -54,6 +55,7 @@ public class MainLoginActivity extends AppCompatActivity {
             }
         };
 
+        btncontinuetoapp = (Button) findViewById(R.id.continuetoapp);
 
         btnChangePassword = (Button) findViewById(R.id.change_password_button);
 
@@ -84,7 +86,6 @@ public class MainLoginActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
         }
 
-
         btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +99,15 @@ public class MainLoginActivity extends AppCompatActivity {
                 remove.setVisibility(View.GONE);
             }
         });
+
+        btncontinuetoapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainLoginActivity.this, MainActivity.class));
+            }
+        });
+
+
 
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,7 +151,9 @@ public class MainLoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(MainLoginActivity.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+
+
+                                        Toast.makeText(MainLoginActivity.this, "Your profile has now been deleted Create a account now", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(MainLoginActivity.this, SignupActivity.class));
                                         finish();
                                         progressBar.setVisibility(View.GONE);
@@ -172,7 +184,7 @@ public class MainLoginActivity extends AppCompatActivity {
 
     }
 
-    // this listener will be called when there is change in the firebase user session
+    // this listener will be called if there is change in the user session on firebase
     FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
         @SuppressLint("SetTextI18n")
         @Override
@@ -192,25 +204,27 @@ public class MainLoginActivity extends AppCompatActivity {
 
     };
 
-    //sign out method
+    //this is the sign out method
     public void signOut() {
         auth.signOut();
 
 
-// this listener will be called when there is change in  the firebase user session
+// this listener will be called if there is change in the user session on firebase
         FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
+                    // if the user auth state changes to user is null
+                    // then login activity will be launched
                     startActivity(new Intent(MainLoginActivity.this, LoginActivity.class));
                     finish();
                 }
             }
         };
     }
+
+
 
     @Override
     protected void onResume() {
@@ -235,4 +249,6 @@ public class MainLoginActivity extends AppCompatActivity {
 
 
     }
+
+
 }
