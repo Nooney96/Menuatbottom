@@ -3,7 +3,7 @@ package rossnoonan.menuatbottom.groupandbills;
 
 
 /*
-* adapter class for Fragment_show
+* adapter class for Fragment_expenses
 * */
 public class additem {
     String name;

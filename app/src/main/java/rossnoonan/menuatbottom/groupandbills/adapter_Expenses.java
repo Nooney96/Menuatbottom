@@ -13,13 +13,13 @@ import java.util.List;
 import rossnoonan.menuatbottom.R;
 
 
-public class adapter_Show extends ArrayAdapter<item> {
+public class adapter_Expenses extends ArrayAdapter<item> {
     private SparseBooleanArray mSelectedItemsIds;
     private LayoutInflater inflater;
     private Context mContext;
     private List<item> list;
 
-    public adapter_Show(Context context, int resourceId, List<item> list) {
+    public adapter_Expenses(Context context, int resourceId, List<item> list) {
         super(context, resourceId, list);
         mSelectedItemsIds = new SparseBooleanArray();
         mContext = context;

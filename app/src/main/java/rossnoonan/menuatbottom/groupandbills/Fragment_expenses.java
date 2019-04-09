@@ -30,13 +30,13 @@ import java.util.Vector;
 
 import rossnoonan.menuatbottom.R;
 
-public class Fragment_show extends Fragment {
+public class Fragment_expenses extends Fragment {
     // Store instance variables
     private String title;
     private int page;
     String p;
     private ListView nlist;
-    private adapter_Show adapter;
+    private adapter_Expenses adapter;
     private List<item> niitemlist;
     ArrayList<item> list_items= new ArrayList<>();
     Vector<Integer> vec =new Vector<>();
@@ -50,8 +50,8 @@ public class Fragment_show extends Fragment {
     FloatingActionButton f;
 
     // newInstance constructor for creating fragment with arguments
-    public static Fragment_show newInstance(int page, String title) {
-        Fragment_show fragmentFirst = new Fragment_show();
+    public static Fragment_expenses newInstance(int page, String title) {
+        Fragment_expenses fragmentFirst = new Fragment_expenses();
         Bundle args = new Bundle();
         Log.e("fragment show","1111111111111");
         args.putInt("someInt", page);
@@ -115,8 +115,8 @@ public class Fragment_show extends Fragment {
             }
         }
         try {
-            //adapter=new adapter_Show(Fragment_show.this,niitemlist);
-            adapter =new adapter_Show(getActivity(),R.layout.textfile,niitemlist);
+            //adapter=new adapter_Expenses(Fragment_expenses.this,niitemlist);
+            adapter =new adapter_Expenses(getActivity(),R.layout.textfile,niitemlist);
 
             nlist.setAdapter(adapter);
         } catch (Exception e) {

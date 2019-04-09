@@ -74,8 +74,8 @@ public class ViewBillDetails extends AppCompatActivity {
 
             switch (position) {
                 case 0: // Fragment # 0 - This will show FirstFragment
-                    Fragment f=new Fragment_show();
-                    return Fragment_show.newInstance(0, null);
+                    Fragment f=new Fragment_expenses();
+                    return Fragment_expenses.newInstance(0, null);
                 case 1:
                     Fragment f2=new Fragment_balance();
                     return Fragment_balance.newInstance(1,null);

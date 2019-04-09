@@ -72,5 +72,5 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="239dp"
         android:backgroundTint="@android:drawable/screen_background_light_transparent"
-        android:prompt="@string/business_prompt"></Spinner>
+        android:prompt="@string/name_prompt"></Spinner>
 </RelativeLayout>
