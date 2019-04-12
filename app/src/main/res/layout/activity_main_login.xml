@@ -39,7 +39,8 @@
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
         tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="125dp" />
+        tools:layout_editor_absoluteY="125dp"
+        tools:ignore="InvalidImeActionId" />
 
     <EditText
         android:id="@+id/newPassword"
@@ -58,7 +59,8 @@
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/white"
         tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="168dp" />
+        tools:layout_editor_absoluteY="168dp"
+        tools:ignore="InvalidImeActionId" />
 
     <Button
         android:id="@+id/changePass"
