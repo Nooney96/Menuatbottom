@@ -10,13 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import rossnoonan.menuatbottom.graphs.Main_graph_activity;
-import rossnoonan.menuatbottom.groupandbills.AddGrouptwo;
+import rossnoonan.menuatbottom.groupandbills.Add_Group;
 import rossnoonan.menuatbottom.main.SendBirdLoginActivity;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class DashboardFragment extends Fragment {
 
 
@@ -58,7 +56,7 @@ public class DashboardFragment extends Fragment {
        btnOpenBills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), AddGrouptwo.class);
+                Intent in = new Intent(getActivity(), Add_Group.class);
                 startActivity(in);
             }
         });

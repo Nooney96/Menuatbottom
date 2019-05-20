@@ -11,6 +11,8 @@ import android.widget.CompoundButton;
 
 import rossnoonan.menuatbottom.R;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 /**
  * A fragment displaying an option to set the channel as Distinct.

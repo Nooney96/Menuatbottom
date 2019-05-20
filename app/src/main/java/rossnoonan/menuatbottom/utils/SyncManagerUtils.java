@@ -11,6 +11,9 @@ import com.sendbird.android.UserMessage;
 
 import java.util.List;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class SyncManagerUtils {
     /**
      *  It returns the index that targetChannel should be inserted to the given channel list.

@@ -19,10 +19,14 @@ import com.sendbird.android.SendBirdException;
 
 import rossnoonan.menuatbottom.R;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * Allows a user to create an Open Channel.
  * Dialog instead of activity?
  */
+
 
 public class CreateOpenChannelActivity extends AppCompatActivity {
 

@@ -14,6 +14,9 @@ import com.bumptech.glide.request.target.Target;
 
 import rossnoonan.menuatbottom.R;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class PhotoViewerActivity extends AppCompatActivity {
 
     @Override

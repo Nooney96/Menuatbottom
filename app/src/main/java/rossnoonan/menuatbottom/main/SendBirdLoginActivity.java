@@ -1,5 +1,8 @@
 package rossnoonan.menuatbottom.main;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -113,7 +116,7 @@ public class SendBirdLoginActivity extends AppCompatActivity {
 
                 PreferenceUtils.setConnected(true);
 
-                // Update the user's nickname
+                // Add_bill the user's nickname
                 updateCurrentUserInfo(userNickname);
                 updateCurrentUserPushToken();
 
@@ -126,7 +129,7 @@ public class SendBirdLoginActivity extends AppCompatActivity {
     }
 
     /**
-     * Update the user's push token.
+     * Add_bill the user's push token.
      */
     private void updateCurrentUserPushToken() {
         PushUtils.registerPushTokenForCurrentUser(SendBirdLoginActivity.this, null);
@@ -148,7 +151,7 @@ public class SendBirdLoginActivity extends AppCompatActivity {
                             .show();
 
                     // Show update failed snackbar
-                    showSnackbar("Update user nickname failed");
+                    showSnackbar("Add_bill user nickname failed");
 
                     return;
                 }

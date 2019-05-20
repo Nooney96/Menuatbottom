@@ -22,12 +22,12 @@ import rossnoonan.menuatbottom.R;
 /**
  * show results of balanced amount to be shared between friends
  */
-public class Fragment_balance extends Fragment {
+public class Fragment_Balance extends Fragment {
     // Store instance variables
     private String title;
     private int page;
-    String p;
-    int n;
+    String groupname;
+    int nooffiends;
     SQLiteDatabase dbgroup=null;
     balance_adapter adapter;
     ArrayAdapter adapter2;
@@ -38,12 +38,12 @@ public class Fragment_balance extends Fragment {
     ArrayList<String> list_ball=new ArrayList<String >();
 
     // newInstance constructor for creating fragment with arguments
-    public static Fragment_balance newInstance(int page, String title) {
-        Fragment_balance fragmentSecond = new Fragment_balance();
+    public static Fragment_Balance newInstance(int page, String title) {
+        Fragment_Balance fragmentSecond = new Fragment_Balance();
         Bundle args = new Bundle();
-        args.putInt("someInt", page);
-        args.putString("someTitle", title);
-        Log.e("fragment balance","222222222");
+        args.putInt("Int", page);
+        args.putString("Title", title);
+        Log.e("fragment balance","65");
         fragmentSecond.setArguments(args);
         return fragmentSecond;
     }
@@ -68,81 +68,84 @@ public class Fragment_balance extends Fragment {
         dbgroup=getActivity().openOrCreateDatabase("grouptwo.db", Context.MODE_PRIVATE, null);
         Intent in=getActivity().getIntent();
         Bundle bundle=in.getExtras();
-        p=bundle.getString("id");
-        Cursor c=dbgroup.rawQuery("SELECT * FROM Group_details ORDER BY date_go DESC;",null);
-        if(c!=null){
-            if(c.moveToFirst()){
+        groupname=bundle.getString("id");
+        Cursor cursor=dbgroup.rawQuery("SELECT * FROM Group_details ORDER BY date_go DESC;",null);
+        if(cursor!=null){
+            if(cursor.moveToFirst()){
                 do{
-                    String s=c.getString(c.getColumnIndex("group_name"));
-                    if(s.matches(p)){
-                        n=c.getInt(c.getColumnIndex("friend_no"));
+                    String group_name=cursor.getString(cursor.getColumnIndex("group_name"));
+                    if(group_name.matches(groupname)){
+                        nooffiends=cursor.getInt(cursor.getColumnIndex("friend_no"));
                         break;
                     }
 
-                }while(c.moveToNext());
+                }while(cursor.moveToNext());
             }
         }
-        String table="f"+p;
+        String table="f"+groupname;
         int i=0;
-        c=dbgroup.rawQuery("SELECT * FROM "+table+";",null);
-        if(c!=null){
-            if (c.moveToFirst()) {
+        //database query for getting friend name and amount from database
+        cursor=dbgroup.rawQuery("SELECT * FROM "+table+";",null);
+        if(cursor!=null){
+            if (cursor.moveToFirst()) {
                 do{
                     calculate assignment1 = new calculate();
-                    assignment1.name = c.getString(c.getColumnIndex("friend"));
-                    assignment1.money = c.getDouble(c.getColumnIndex("amount"));
+                    assignment1.name = cursor.getString(cursor.getColumnIndex("friend"));
+                    assignment1.money = cursor.getDouble(cursor.getColumnIndex("amount"));
                     list.add(assignment1);
                     i++;
-                }while(c.moveToNext());
+                }while(cursor.moveToNext());
             }
         }
 
-
+//avg = Total pf bills added up
+        //used to calculate how much user is owed
         double avg=0.0;
-        for(calculate p :list)
+        for(calculate balanceCaulate :list)
         {
-            avg+=p.money;
+            avg+=balanceCaulate.money;
         }
-        avg=(1.0*avg)/n;
+        avg=(1.0*avg)/nooffiends;
         DecimalFormat df = new DecimalFormat("####0.00");
-        for(calculate p:list){
-            p.money-=avg;
-            String d1=p.name;
-            String d2=df.format(p.money);
-            list_items.add(new balancedata(d1,d2));
+        for(calculate balanceCaulate:list){
+            balanceCaulate.money-=avg;
+            String friendname=balanceCaulate.name;
+            String friendmoney=df.format(balanceCaulate.money);
+            list_items.add(new balancedata(friendname,friendmoney));
         }
         adapter= new balance_adapter(getActivity(),R.layout.balance_textview,list_items);
         list_a.setAdapter(adapter);
 
-        for(calculate p : list){
-            Log.e(p.name, String.valueOf(p.money));
+        for(calculate balancecalulate : list){
+            Log.e(balancecalulate.name, String.valueOf(balancecalulate.money));
         }
 
         //update the second list for sorting out who owes who and how much money
 
-        int j=list.size()-1;
+        int listsize=list.size()-1;
         i=0;
-        while(i<j){
-            if (Math.abs(list.get(i).money)> Math.abs(list.get(j).money)){
-                list_ball.add(list.get(i).name + " owes " + list.get(j).name + " :: £ " + df.format(Math.abs(list.get(j).money)));
-                list.get(i).money += list.get(j).money;
-                list.get(j).money = 0.0;
-                j--;
+        while(i<listsize){
+            if (Math.abs(list.get(i).money)> Math.abs(list.get(listsize).money)){
+                list_ball.add(list.get(i).name + " owes " + list.get(listsize).name + " :: £ " + df.format(Math.abs(list.get(listsize).money)));
+                list.get(i).money += list.get(listsize).money;
+                list.get(listsize).money = 0.0;
+                listsize--;
             }
-            else if(Math.abs(list.get(i).money)< Math.abs(list.get(j).money)){
-                list_ball.add(list.get(i).name + " owes " + list.get(j).name + " :: £ " + df.format(Math.abs(list.get(i).money)));
-                list.get(j).money += list.get(i).money;
+            else if(Math.abs(list.get(i).money)< Math.abs(list.get(listsize).money)){
+                list_ball.add(list.get(i).name + " owes " + list.get(listsize).name + " :: £ " + df.format(Math.abs(list.get(i).money)));
+                list.get(listsize).money += list.get(i).money;
                 list.get(i).money = 0.0;
                 i++;
             }
             else {
-                list_ball.add(list.get(i).name + " owes " + list.get(j).name + " :: £ " + df.format(Math.abs(list.get(i).money)));
+                list_ball.add(list.get(i).name + " owes " + list.get(listsize).name + " :: £ " + df.format(Math.abs(list.get(i).money)));
                 list.get(i).money = 0.0;
-                list.get(j).money = 0.0;
+                list.get(listsize).money = 0.0;
                 i++;
-                j--;
+                listsize--;
             }
         }
+        //calling and setting adapters for screen
         adapter2=new ArrayAdapter<String>(getActivity(),R.layout.simple_text_list_test,list_ball);
         list_b.setAdapter(adapter2);
 

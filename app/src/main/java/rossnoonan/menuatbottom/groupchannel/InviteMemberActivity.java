@@ -23,6 +23,9 @@ import java.util.List;
 
 import rossnoonan.menuatbottom.R;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * Displays a selectable list of users within the app. Selected users will be invited into the
  * current channel.

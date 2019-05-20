@@ -25,6 +25,9 @@ import java.io.Reader;
 import java.text.DecimalFormat;
 import java.util.Hashtable;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * DateUtils related to file handling (for sending / downloading file messages).
  */

@@ -11,14 +11,14 @@ import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    //private TextView mTextMessage;
+
     private BottomNavigationView mMainNav;
     private FrameLayout mMainFrame;
 
     private GraphFragment graphFragment;
     private PaypalMoneyPoolFragment paypalMoneyPoolFragment;
     private DashboardFragment dashboardFragment;
-    private WhatsappFragment whatsappFragment;
+
 
 
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // mTextMessage = (TextView) findViewById(R.id.message);
+
 
 
         mMainFrame = (FrameLayout) findViewById(R.id.main_frame);
@@ -36,11 +36,7 @@ public class MainActivity extends AppCompatActivity {
         graphFragment = new GraphFragment();
         dashboardFragment = new DashboardFragment();
         paypalMoneyPoolFragment = new PaypalMoneyPoolFragment();
-        whatsappFragment = new WhatsappFragment();
 
-       // bottomNavigation.setDefaultBackgroundColor(Color.WHITE);
-        //bottomNavigation.setAccentColor(fetchColor(R.color.AccentColor));
-        //bottomNavigation.setInactiveColor(fetchColor(R.color.yourInactiveColor));
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

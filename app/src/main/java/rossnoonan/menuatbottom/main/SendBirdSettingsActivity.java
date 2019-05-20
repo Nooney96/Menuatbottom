@@ -56,6 +56,8 @@ import rossnoonan.menuatbottom.utils.ImageUtils;
 import rossnoonan.menuatbottom.utils.PreferenceUtils;
 import rossnoonan.menuatbottom.utils.PushUtils;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 public class SendBirdSettingsActivity extends AppCompatActivity {
 
@@ -600,7 +602,7 @@ public class SendBirdSettingsActivity extends AppCompatActivity {
                     Toast.makeText(SendBirdSettingsActivity.this, "" + e.getCode() + ":" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     // Show update failed snackbar
-                    showSnackbar("Update user info failed");
+                    showSnackbar("Add_bill user info failed");
                     return;
                 }
 
@@ -623,7 +625,7 @@ public class SendBirdSettingsActivity extends AppCompatActivity {
                     Toast.makeText(SendBirdSettingsActivity.this, "" + e.getCode() + ":" + e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     // Show update failed snackbar
-                    showSnackbar("Update user info failed");
+                    showSnackbar("Add_bill user info failed");
                     return;
                 }
 

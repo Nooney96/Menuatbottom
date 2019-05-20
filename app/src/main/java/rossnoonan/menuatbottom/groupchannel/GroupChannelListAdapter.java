@@ -38,6 +38,10 @@ import rossnoonan.menuatbottom.utils.SyncManagerUtils;
 import rossnoonan.menuatbottom.utils.TextUtils;
 import rossnoonan.menuatbottom.utils.TypingIndicator;
 
+
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * Displays a list of Group Channels within a SendBird application.
  */

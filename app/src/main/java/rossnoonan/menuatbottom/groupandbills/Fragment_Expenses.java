@@ -30,11 +30,11 @@ import java.util.Vector;
 
 import rossnoonan.menuatbottom.R;
 
-public class Fragment_expenses extends Fragment {
+public class Fragment_Expenses extends Fragment {
     // Store instance variables
     private String title;
     private int page;
-    String p;
+    String groupname;
     private ListView nlist;
     private adapter_Expenses adapter;
     private List<item> niitemlist;
@@ -49,9 +49,9 @@ public class Fragment_expenses extends Fragment {
     int count=0;
     FloatingActionButton f;
 
-    // newInstance constructor for creating fragment with arguments
-    public static Fragment_expenses newInstance(int page, String title) {
-        Fragment_expenses fragmentFirst = new Fragment_expenses();
+    // new Instance constructor for creating fragment with arguments
+    public static Fragment_Expenses newInstance(int page, String title) {
+        Fragment_Expenses fragmentFirst = new Fragment_Expenses();
         Bundle args = new Bundle();
         Log.e("fragment show","1111111111111");
         args.putInt("someInt", page);
@@ -73,55 +73,56 @@ public class Fragment_expenses extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.show_fragment, container, false);
+        final View view = inflater.inflate(R.layout.expenses_fragment, container, false);
 
         dbgroup = getActivity().openOrCreateDatabase("grouptwo.db", Context.MODE_PRIVATE, null);
         Intent in = getActivity().getIntent();
         Bundle bundle = in.getExtras();
-        p = bundle.getString("id");
+        groupname = bundle.getString("id");
         f = (FloatingActionButton) view.findViewById(R.id.myFAB);
         f.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(getActivity(), Update.class);
-                        intent.putExtra("id", p);
+                        Intent intent = new Intent(getActivity(), Add_bill.class);
+                        intent.putExtra("id", groupname);
                         startActivity(intent);
                         getActivity().finish();
                     }
                 }
         );
 
-
+// it is this code i need review at a later stage for improvements
         nlist = (ListView) view.findViewById(R.id.list_view);
         niitemlist = new ArrayList<>();
         int x=0;
-        dbgroup.execSQL("create table if not exists " + p + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,friend_name TEXT,note TEXT,amount TEXT)");
-        Cursor c = dbgroup.rawQuery("SELECT * FROM " + p + ";", null);
-        if (c != null) {
+        dbgroup.execSQL("create table if not exists " + groupname + " (ID INTEGER PRIMARY KEY AUTOINCREMENT,friend_name TEXT,note TEXT,amount TEXT)");
+        Cursor cursor = dbgroup.rawQuery("SELECT * FROM " + groupname + ";", null);
+        if (cursor != null) {
             int i = 0;
-            if (c.moveToFirst()) {
+            if (cursor.moveToFirst()) {
                 do {
                     //create list view from table group_name
-                    String d2 = c.getString(c.getColumnIndex("friend_name"));
-                    String d1 = c.getString(c.getColumnIndex("note"));
-                    String d4 = c.getString(c.getColumnIndex("amount"));
+                    String friendname = cursor.getString(cursor.getColumnIndex("friend_name"));
+                    String noteofbill = cursor.getString(cursor.getColumnIndex("note"));
+                    String billamount = cursor.getString(cursor.getColumnIndex("amount"));
                     vec.add(1);
-                    niitemlist.add(new item(d1,d4,d2));
+                    niitemlist.add(new item(noteofbill,billamount,friendname));
 
                     //add to chart...
 
-                } while (c.moveToNext());
+                } while (cursor.moveToNext());
             }
         }
         try {
-            //adapter=new adapter_Expenses(Fragment_expenses.this,niitemlist);
-            adapter =new adapter_Expenses(getActivity(),R.layout.textfile,niitemlist);
+            //adapter=new adapter_Expenses(Fragment_Expenses.this,niitemlist);
+            adapter =new adapter_Expenses(getActivity(),R.layout.textfile_bill,niitemlist);
 
             nlist.setAdapter(adapter);
         } catch (Exception e) {
             Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
             System.out.println(e);
+
         }
 
         nlist.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -134,6 +135,7 @@ public class Fragment_expenses extends Fragment {
                     nlist.getChildAt(i).setBackgroundColor(Color.WHITE);
 
                     vec.set(i,1);
+
                     String ii= Integer.toString(i);
                     Log.e("not select",ii);
 
@@ -149,11 +151,11 @@ public class Fragment_expenses extends Fragment {
                 }
 
             }
-
+            //Method for using context menu to delete bill from database
             @Override
             public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
                 MenuInflater inflater = actionMode.getMenuInflater();
-                inflater.inflate(R.menu.my_context_menu, menu);
+                inflater.inflate(R.menu.delete_menu, menu);
 
                 return true;
             }
@@ -163,6 +165,7 @@ public class Fragment_expenses extends Fragment {
                 return false;
             }
 
+            //delete menu called to delete data
             @Override
             public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
                 Log.e("1","enter switch");
@@ -170,6 +173,7 @@ public class Fragment_expenses extends Fragment {
                 switch (menuItem.getItemId()) {
                     case R.id.delete_id:
                         for (int i=vec.size()-1;i>-1;i--) {
+
                             if (vec.get(i) == 0) {
                                 TextView t = (TextView) view.findViewById(R.id.name);
                                 String name=niitemlist.get(i).getName();
@@ -178,7 +182,7 @@ public class Fragment_expenses extends Fragment {
 
                                 vec.set(i,1);
                                 nlist.getChildAt(i).setBackgroundColor(Color.WHITE);
-                                final String TABLE_NAME =p;
+                                final String TABLE_NAME =groupname;
                                 final String NOTE="note";
                                 final String FRIEND = "friend_name";
                                 Log.e("table name",TABLE_NAME);
@@ -187,39 +191,43 @@ public class Fragment_expenses extends Fragment {
                                 dbgroup.delete(TABLE_NAME,
                                         FRIEND + " = ? AND " + NOTE + " = ?",
                                         new String[] {name, note+""});
-                                //update fpune
-                                String tb="f"+p;
-                                Log.e("sdhjbs",name);
-                                Cursor c3 = dbgroup.rawQuery("SELECT * FROM " + tb + ";", null);
-                                if (c3 != null) {
-                                    if (c3.moveToFirst()) {
+                                //update f
+                                String tb="f"+groupname;
+                                //Log.e("sdhjbs",name);
+                                Cursor cursor3 = dbgroup.rawQuery("SELECT * FROM " + tb + ";", null);
+                                //tb is f + groupname
+                                //f = floating action button
+                                if (cursor3 != null) {
+                                    if (cursor3.moveToFirst()) {
                                         do {
-                                            String ch = c3.getString(c3.getColumnIndex("friend"));
+                                            String ch = cursor3.getString(cursor3.getColumnIndex("friend"));
                                             Log.e("friend name",ch);
                                             if (ch.matches(name)) {
-                                                String temp = c3.getString(c3.getColumnIndex("amount"));
-                                                int index = c3.getInt(c3.getColumnIndex("ID"));
-                                                int money1 = Integer.parseInt(temp);
+                                                String temp = cursor3.getString(cursor3.getColumnIndex("amount"));
+                                                int index = cursor3.getInt(cursor3.getColumnIndex("ID"));
+                                                int billamount = Integer.parseInt(temp);
                                                 int money2 = Integer.parseInt(amount);
-                                                int money= money1 - money2;
+                                                int money= billamount - money2;
                                                 ContentValues cv=new ContentValues();
                                                 cv.put("amount",money);
                                                 cv.put("friend",name);
                                                 dbgroup.update(tb,cv, "ID="+index, null);
-                                                temp =c3.getString(c3.getColumnIndex("amount"));
+                                                temp =cursor3.getString(cursor3.getColumnIndex("amount"));
                                                 break;
                                             }
 
-                                        } while (c3.moveToNext());
+                                        } while (cursor3.moveToNext());
                                     }
                                 }
 
                                 niitemlist.remove(i);
                             }
+                            //changing adapter on change
                             adapter.notifyDataSetChanged();
                             flag=1;
                             start();
                         }
+                        //putting use back to activity with toast message
                         Toast.makeText(getActivity(), count + " items removed ", Toast.LENGTH_SHORT).show();
                         count = 0;
                         actionMode.finish();
@@ -237,9 +245,10 @@ public class Fragment_expenses extends Fragment {
 
         return view;
     }
+    //start function
     public void start(){
         Intent same=new Intent(getActivity(),ViewBillDetails.class);
-        same.putExtra("id",p);
+        same.putExtra("id",groupname);
         startActivity(same);
         getActivity().finish();
     }

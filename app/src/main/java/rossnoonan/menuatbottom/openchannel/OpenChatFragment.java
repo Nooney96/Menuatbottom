@@ -55,6 +55,9 @@ import rossnoonan.menuatbottom.utils.MediaPlayerActivity;
 import rossnoonan.menuatbottom.utils.PhotoViewerActivity;
 
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class OpenChatFragment extends Fragment {
 
     private static final String LOG_TAG = OpenChatFragment.class.getSimpleName();

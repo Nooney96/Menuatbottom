@@ -20,6 +20,9 @@ import java.util.List;
 import rossnoonan.menuatbottom.R;
 import rossnoonan.menuatbottom.main.ConnectionManager;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class MemberListActivity extends AppCompatActivity{
 
     private static final String CONNECTION_HANDLER_ID = "CONNECTION_HANDLER_MEMBER_LIST";

@@ -21,6 +21,9 @@ import java.util.List;
 import rossnoonan.menuatbottom.R;
 
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * A fragment displaying a list of selectable users.
  */

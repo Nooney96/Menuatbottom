@@ -12,12 +12,13 @@ import android.view.MenuItem;
 import rossnoonan.menuatbottom.R;
 
 /*
- * main class for fragments show_fragment and balance_fragment
+ * main class for fragments expenses_fragment and balance_fragment
  * */
 
 public class ViewBillDetails extends AppCompatActivity {
     FragmentPagerAdapter adapterViewPager;
-    String p;
+    String groupname;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,33 +27,13 @@ public class ViewBillDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent in=getIntent();
         Bundle bundle=in.getExtras();
-        p=bundle.getString("id");
-        setTitle(p);
+        groupname=bundle.getString("id");
+        setTitle(groupname);
         ViewPager vpPager = (ViewPager) findViewById(R.id.vpPager);
         adapterViewPager = new ViewBillDetails.MyPagerAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
 
-        vpPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            // This method will be invoked when a new page becomes selected.
-            @Override
-            public void onPageSelected(int position) {
-                // Toast.makeText(MainActivity.this, "Selected page position: " + position, Toast.LENGTH_SHORT).show();
-            }
-
-            // This method will be invoked when the current page is scrolled
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                // Code goes here
-            }
-
-            // Called when the scroll state changes:
-            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                // Code goes here
-            }
-        });
     }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
@@ -74,11 +55,11 @@ public class ViewBillDetails extends AppCompatActivity {
 
             switch (position) {
                 case 0: // Fragment # 0 - This will show FirstFragment
-                    Fragment f=new Fragment_expenses();
-                    return Fragment_expenses.newInstance(0, null);
+                    Fragment fragmentexpenses =new Fragment_Expenses();
+                    return Fragment_Expenses.newInstance(0, null);
                 case 1:
-                    Fragment f2=new Fragment_balance();
-                    return Fragment_balance.newInstance(1,null);
+                    Fragment fragmentbalance=new Fragment_Balance();
+                    return Fragment_Balance.newInstance(1,null);
 
 
                 default:
@@ -86,7 +67,7 @@ public class ViewBillDetails extends AppCompatActivity {
             }
         }
 
-        // Returns the page title for the top indicator
+        // Returns the indicated page title for the top indicator in selection
         @Override
         public CharSequence getPageTitle(int position) {
             if(position==0)
@@ -96,12 +77,13 @@ public class ViewBillDetails extends AppCompatActivity {
         }
 
     }
+    //on a back press method for user to get back to home screen with  a backpress
     @Override
     public void onBackPressed()
     {
         super.onBackPressed();
-        Intent in=new Intent(getApplicationContext(),AddGrouptwo.class);
-        in.putExtra("id",p);
+        Intent in=new Intent(getApplicationContext(), Add_Group.class);
+        in.putExtra("id",groupname);
         startActivity(in);
         finish();
 

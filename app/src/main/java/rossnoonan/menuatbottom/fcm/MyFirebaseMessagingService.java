@@ -40,6 +40,9 @@ import rossnoonan.menuatbottom.R;
 import rossnoonan.menuatbottom.groupchannel.GroupChannelActivity;
 import rossnoonan.menuatbottom.utils.PreferenceUtils;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";

@@ -21,7 +21,7 @@
         android:onClick="opennewwindow"
         android:src="@android:drawable/ic_input_add"
         android:tint="@android:color/background_light"
-        app:backgroundTint="#60AFFE"
+        app:backgroundTint="@color/colorPrimary"
         app:borderWidth="0dp"
         app:elevation="5dp" />
 

@@ -17,6 +17,9 @@ import java.util.List;
 
 import rossnoonan.menuatbottom.R;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * An adapter that displays a list of Open Channels in an RecyclerView.
  */

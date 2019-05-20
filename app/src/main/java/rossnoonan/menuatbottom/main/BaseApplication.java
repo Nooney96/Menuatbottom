@@ -1,5 +1,7 @@
 package rossnoonan.menuatbottom.main;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 import android.app.Application;
 

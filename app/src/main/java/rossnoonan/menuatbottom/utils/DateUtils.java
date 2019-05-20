@@ -3,6 +3,9 @@ package rossnoonan.menuatbottom.utils;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * A class with static util methods.
  */

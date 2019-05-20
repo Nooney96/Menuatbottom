@@ -3,13 +3,13 @@ package rossnoonan.menuatbottom.groupandbills;
 
 
 /*
-* adapter class for Fragment_expenses
+* adapter class for Fragment_Expenses
 * */
-public class additem {
+public class additem_adapter_fragExspense {
     String name;
     String date;
 
-    public additem(String name, String date) {
+    public additem_adapter_fragExspense(String name, String date) {
         this.name = name;
         this.date = date;
     }

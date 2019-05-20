@@ -22,6 +22,9 @@ import rossnoonan.menuatbottom.R;
 import rossnoonan.menuatbottom.groupchannel.UserListAdapter;
 import rossnoonan.menuatbottom.main.ConnectionManager;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * Displays a list of the participants of a specified Open Channel.
  */

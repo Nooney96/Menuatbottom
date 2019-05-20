@@ -26,6 +26,8 @@ import rossnoonan.menuatbottom.utils.PreferenceUtils;
  * then shows an option to create a Distinct channel.
  */
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 public class CreateGroupChannelActivity extends AppCompatActivity
         implements SelectUserFragment.UsersSelectedListener, SelectDistinctFragment.DistinctSelectedListener {
 

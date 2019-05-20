@@ -13,16 +13,17 @@ import java.util.List;
 import rossnoonan.menuatbottom.R;
 
 
-//adapter class for AddGrouptwo
+//adapter class for Add_Group
 
 
-public class add_adapter extends ArrayAdapter<additem> {
+public class add_adapter extends ArrayAdapter<additem_adapter_fragExspense> {
     private SparseBooleanArray mSelectedItemsIds;
     private LayoutInflater inflater;
     private Context mContext;
-    private List<additem> list;
+    private List<additem_adapter_fragExspense> list;
 
-    public add_adapter(Context context, int resourceId, List<additem> list) {
+    //Starting inflater for activity
+    public add_adapter(Context context, int resourceId, List<additem_adapter_fragExspense> list) {
         super(context, resourceId, list);
         mSelectedItemsIds = new SparseBooleanArray();
         mContext = context;
@@ -34,15 +35,14 @@ public class add_adapter extends ArrayAdapter<additem> {
         TextView date;
         TextView name;
     }
-
+    //Made public so it could be called to the Add_Group
     public View getView(int position, View view, ViewGroup parent) {
         final ViewHolder holder;
         if (view == null) {
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.add_text, null);
+            view = inflater.inflate(R.layout.add_text_groupinfo, null);
             holder.name = (TextView) view.findViewById(R.id.name);
             holder.date = (TextView) view.findViewById(R.id.date);
-            //holder.amount = (TextView) view.findViewById(R.id.amount);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -53,7 +53,7 @@ public class add_adapter extends ArrayAdapter<additem> {
     }
 
     @Override
-    public void remove(additem remitm) {
+    public void remove(additem_adapter_fragExspense remitm) {
         list.remove(remitm);
         notifyDataSetChanged();
     }

@@ -26,6 +26,9 @@ import rossnoonan.menuatbottom.utils.DateUtils;
 import rossnoonan.menuatbottom.utils.FileUtils;
 import rossnoonan.menuatbottom.utils.ImageUtils;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * An adapter for a RecyclerView that displays messages in an Open Channel.
  */

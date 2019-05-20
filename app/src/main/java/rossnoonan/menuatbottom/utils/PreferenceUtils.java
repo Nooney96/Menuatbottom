@@ -3,6 +3,9 @@ package rossnoonan.menuatbottom.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class PreferenceUtils {
 
     private static final String PREFERENCE_KEY_USER_ID = "userId";

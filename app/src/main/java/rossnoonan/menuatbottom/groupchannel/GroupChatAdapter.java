@@ -32,6 +32,8 @@ import rossnoonan.menuatbottom.utils.PreferenceUtils;
 import rossnoonan.menuatbottom.utils.SyncManagerUtils;
 import rossnoonan.menuatbottom.utils.UrlPreviewInfo;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 class GroupChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final String URL_PREVIEW_CUSTOM_TYPE = "url_preview";

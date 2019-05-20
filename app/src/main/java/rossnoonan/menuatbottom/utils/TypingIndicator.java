@@ -10,6 +10,8 @@ import android.widget.ImageView;
 
 import java.util.List;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 public class TypingIndicator {
 

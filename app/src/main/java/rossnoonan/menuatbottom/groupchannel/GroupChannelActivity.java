@@ -10,7 +10,8 @@ import android.view.MenuItem;
 import rossnoonan.menuatbottom.R;
 
 
-
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 public class GroupChannelActivity extends AppCompatActivity{
 

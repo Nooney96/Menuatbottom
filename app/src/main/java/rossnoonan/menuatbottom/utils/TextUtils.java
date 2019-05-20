@@ -9,6 +9,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class TextUtils {
     public static String getGroupChannelTitle(GroupChannel channel) {
         List<Member> members = channel.getMembers();

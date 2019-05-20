@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -24,19 +23,19 @@ import java.util.Calendar;
 
 import rossnoonan.menuatbottom.R;
 
-public class AddGroupDetailsTwo extends AppCompatActivity {
+public class Add_Group_Details extends AppCompatActivity {
 
     private static Button btn;
     private static Button b1;
     private static Button btnadd;
     public DatePickerDialog datepick = null;
     SQLiteDatabase dbgroup=null;
-    EditText e1,e2;
-    Editable d1,d2=null;
-    TextView edtDob=null;
+    EditText editgroupname,editnumber;
+    Editable dgroupname,dnumberofpeople=null;
+    TextView edselectdated=null;
     TextView edtxt;
     EditText f_add;
-    EditText num;
+    EditText numofpeople;
     int check=0;
     ArrayList<String> fname= new ArrayList<String>();
     int size=0;
@@ -50,20 +49,22 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
         btnadd = (Button) findViewById(R.id.add_btn);
         b1 = (Button) findViewById(R.id.daypickbut);
         f_add = (EditText) findViewById(R.id.friend_name);
-        num = (EditText) findViewById(R.id.editno);
+        numofpeople = (EditText) findViewById(R.id.editno);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         OnClickpickDate();
         OnClickButtonSubmit();
         setTitle("New Group");
         OnClickButtonAddFriend();
     }
+    //onback press method for user to get back to home screen with backpress
     @Override
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(AddGroupDetailsTwo.this, AddGrouptwo.class));
+        startActivity(new Intent(Add_Group_Details.this, Add_Group.class));
         finish();
     }
+    //function for date of group created
     public void OnClickpickDate(){
         try{
             b1.setOnClickListener(new View.OnClickListener(){
@@ -84,33 +85,34 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
         public void onDateSet(DatePicker view, int year, int month, int day) {
             int months = month+1;
             if((months<10)&&(day<10))
-                edtxt.setText(year + "-0" + (months) + "-0" + day);
+                edtxt.setText(day + "-0" + (months) + "-0" + year);
             else if((months<10)&&(day>10))
-                edtxt.setText(year + "-0" + (months) + "-" + day);
+                edtxt.setText(day + "-0" + (months) + "-" + year);
             else if((months>10)&&(day<10))
-                edtxt.setText(year + "-" + (months) + "-0" + day);
+                edtxt.setText(day + "-" + (months) + "-0" + year);
             else
-                edtxt.setText(year + "-" + (months) + "-" + day);
+                edtxt.setText(day + "-" + (months) + "-" + year);
             datepick.hide();
         }
     }
-
+//function to submit all data to database
     void OnClickButtonSubmit() {
-        e1 = (EditText) findViewById(R.id.Textgroup);
-        e2 = (EditText) findViewById(R.id.editno);
-        edtDob = (TextView) findViewById(R.id.daye);
+        editgroupname = (EditText) findViewById(R.id.Textgroup);
+        editnumber = (EditText) findViewById(R.id.editno);
+        edselectdated = (TextView) findViewById(R.id.daye);
         btn.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        //opening or creating database to add information to group
                         dbgroup = openOrCreateDatabase("grouptwo.db", Context.MODE_PRIVATE, null);
-                        d1 = e1.getText();
-                        d2 = e2.getText();
-                        String dd = edtDob.getText().toString();
-                        String s1 = d1.toString().toLowerCase();
-                        String s2 = d2.toString();
-                        s1 = s1.trim();
-                        s2 = s2.trim();
+                        dgroupname = editgroupname.getText();
+                        dnumberofpeople = editnumber.getText();
+                        String ddate = edselectdated.getText().toString();
+                        String groupname = dgroupname.toString().toLowerCase();
+                        String numberofpeople = dnumberofpeople.toString();
+                        groupname = groupname.trim();
+                        numberofpeople = numberofpeople.trim();
 
                         try {
                             dbgroup.execSQL("CREATE TABLE IF NOT EXISTS Group_details (id INTERGER PRIMARY KEY AUTOINCREMENT ,group_name TEXT NOT NULL, date_go DATE NOT NULL," + " friend_no INTEGER NOT NULL DEFAULT 0);");
@@ -119,58 +121,55 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
                             String COL_4 = "friend_no";
                             String table = "Group_details";
                             //check if any of the fields is not empty or friend no is not equal to zero
-                            if (s1.matches("") || s2.matches("") || dd.matches("") || Integer.parseInt(s2) == 0)
-                                throw new ArithmeticException("Inadequate details..\nEnter Again");
+                            if (groupname.matches("") || numberofpeople.matches("") || ddate.matches("") || Integer.parseInt(numberofpeople) == 0)
+                                throw new ArithmeticException("Needs More Details..\n Please Enter Again");
                             ContentValues contentValues = new ContentValues();
-                            contentValues.put(COL_2, d1.toString().toLowerCase());
-                            contentValues.put(COL_2, d1.toString().toLowerCase());
-                            contentValues.put(COL_3, dd);
-                            contentValues.put(COL_4, Integer.parseInt(num.getText().toString()));
-                            int x = Integer.parseInt(num.getText().toString());
+                            contentValues.put(COL_2, dgroupname.toString().toLowerCase());
+                            contentValues.put(COL_3, ddate);
+                            contentValues.put(COL_4, Integer.parseInt(numofpeople.getText().toString()));
+                            int x = Integer.parseInt(numofpeople.getText().toString());
 
                             try {
-                                Cursor c = dbgroup.rawQuery("SELECT * FROM Group_details ORDER BY date_go DESC;", null);
-                                if (c != null) {
+                                Cursor cursor = dbgroup.rawQuery("SELECT * FROM Group_details ORDER BY date_go DESC;", null);
+                                if (cursor != null) {
                                     int i = 0;
-                                    if (c.moveToFirst()) {
+                                    if (cursor.moveToFirst()) {
                                         do {
-                                            String compare = c.getString(c.getColumnIndex("group_name"));
-                                            if (compare.matches(e1.getText().toString().toLowerCase()))
-                                                throw new ArithmeticException("HELLO");
+                                            String compare = cursor.getString(cursor.getColumnIndex("group_name"));
+                                            if (compare.matches(editgroupname.getText().toString().toLowerCase()))
+                                                throw new ArithmeticException("Welcome");
 
-                                        } while (c.moveToNext());
+                                        } while (cursor.moveToNext());
                                     }
 
                                 }
-                                //EXCEPTION
+                                //exceptions for errors
                                 try {
-                                    if (check == Integer.parseInt(num.getText().toString())) {
+                                    if (check == Integer.parseInt(numofpeople.getText().toString())) {
                                         long result = dbgroup.insert(table, null, contentValues);
 
                                         if (result != -1) {
                                             Toast.makeText(getApplicationContext(), "Group Added", Toast.LENGTH_SHORT).show();
-                                            Intent lis = new Intent(getApplicationContext(), AddGrouptwo.class);
+                                            Intent lis = new Intent(getApplicationContext(), Add_Group.class);
                                             startActivity(lis);
                                             finish();
                                         } else
-                                            throw new ArithmeticException("Inadequate details..\nEnter Again");
+                                            throw new ArithmeticException("Needs More Details..\n Please Enter Again");
 
                                     } else {
-                                        Toast.makeText(getApplicationContext(), "ADD MORE FRIENDS", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Please Add More Friends", Toast.LENGTH_SHORT).show();
 
                                     }
 
                                 } catch (Exception e) {
-                                    Toast.makeText(getApplicationContext(), "Inadequate details..\n" +
-                                            "Enter Again", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Needs More Details..\n Please Enter Again", Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (Exception e) {
-                                Toast.makeText(getApplicationContext(), "Group name already added", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "The Group Name Already Added", Toast.LENGTH_LONG).show();
                             }
                         } catch (Exception e) {
-                            Toast.makeText(getApplicationContext(), "Inadequate details..\n" +
-                                    "Enter Again", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Needs More Details..\n Please Enter Again", Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -184,17 +183,17 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         try {
-                            String z = num.getText().toString().trim();
+                            String z = numofpeople.getText().toString().trim();
                             if (z.matches(""))
                                 throw new ArithmeticException("hello");
 
-                            int x = Integer.parseInt(num.getText().toString());
+                            int x = Integer.parseInt(numofpeople.getText().toString());
 
                             if (check < x) {
                                 dbgroup = openOrCreateDatabase("grouptwo.db", Context.MODE_PRIVATE, null);
                                 String TABLE_NAME;
-                                e1 = (EditText) findViewById(R.id.Textgroup);
-                                TABLE_NAME = "f" + e1.getText().toString().toLowerCase();
+                                editgroupname = (EditText) findViewById(R.id.Textgroup);
+                                TABLE_NAME = "f" + editgroupname.getText().toString().toLowerCase();
                                 try {
                                     Cursor c = dbgroup.rawQuery("SELECT * FROM Group_details ORDER BY date_go DESC;", null);
                                     if (c !=null) {
@@ -202,7 +201,7 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
                                         if (c.moveToFirst()) {
                                             do {
                                                 String compare = c.getString(c.getColumnIndex("group_name"));
-                                                if (compare.matches(e1.getText().toString().toLowerCase()))
+                                                if (compare.matches(editgroupname.getText().toString().toLowerCase()))
                                                     throw new ArithmeticException("HELLO");
 
                                             } while (c.moveToNext());
@@ -218,7 +217,7 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
                                         y=y.toLowerCase();
                                         int flag1=0;
                                         if (y.matches(""))
-                                            throw new ArithmeticException("Inadequate details..\nEnter Again");
+                                            throw new ArithmeticException("Needs More Details..\n Please Enter Again");
 
                                         //check if friend name is already included in the list
                                         for(int i=0;i<fname.size();i++){
@@ -236,27 +235,28 @@ public class AddGroupDetailsTwo extends AppCompatActivity {
                                             check++;
                                         }
                                         f_add.setText("");
+                                        //Exception to catch an errors users may have caused
                                     } catch (Exception e) {
-                                        Toast.makeText(getApplicationContext(), "enter friend name", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Please Enter Friend Name", Toast.LENGTH_SHORT).show();
                                     }
                                 } catch (Exception e) {
-                                    Log.e("MYAPP", "exception", e);
+
                                     System.out.print(e.toString());
-                                    Toast.makeText(getApplicationContext(), "Trip already added", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Group Has Already Been Added", Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                Toast.makeText(getApplicationContext(), "friend limit exceeded", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Your Friend Limit Exceeded", Toast.LENGTH_SHORT).show();
                             }
                         }
                         catch (Exception e)
                         {
-                            Toast.makeText(getApplicationContext(), "Inadequate details..\n" +
-                                    "Enter Again", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Needs More Details..\n Please Enter Again", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
         );
     }
+    //for back press to bring user back to home screen
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

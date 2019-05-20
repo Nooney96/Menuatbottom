@@ -34,6 +34,10 @@ import rossnoonan.menuatbottom.utils.PreferenceUtils;
 
 import static android.app.Activity.RESULT_OK;
 
+
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class GroupChannelListFragment extends Fragment {
 
     public static final String EXTRA_GROUP_CHANNEL_URL = "GROUP_CHANNEL_URL";

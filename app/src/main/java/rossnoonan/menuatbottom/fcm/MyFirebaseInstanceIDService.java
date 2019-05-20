@@ -24,7 +24,8 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.sendbird.android.SendBird;
 import com.sendbird.android.SendBirdException;
 
-
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIIDService";

@@ -21,6 +21,9 @@ import rossnoonan.menuatbottom.R;
 import rossnoonan.menuatbottom.main.BlockedMembersListActivity;
 import rossnoonan.menuatbottom.utils.ImageUtils;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * Populates a RecyclerView with a list of users, each with a checkbox.
  */

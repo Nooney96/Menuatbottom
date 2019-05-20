@@ -21,6 +21,9 @@ import rossnoonan.menuatbottom.R;
 import rossnoonan.menuatbottom.main.ConnectionManager;
 import rossnoonan.menuatbottom.utils.ImageUtils;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class MemberInfoActivity extends AppCompatActivity{
 
     private static final String CONNECTION_HANDLER_ID = "CONNECTION_HANDLER_MEMBER_INFO";

@@ -69,6 +69,8 @@ import rossnoonan.menuatbottom.utils.TextUtils;
 import rossnoonan.menuatbottom.utils.UrlPreviewInfo;
 import rossnoonan.menuatbottom.utils.WebUtils;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 public class GroupChatFragment extends Fragment {
 
@@ -813,7 +815,7 @@ public class GroupChatFragment extends Fragment {
                             return;
                         }
 
-                        // Update a sent message to RecyclerView
+                        // Add_bill a sent message to RecyclerView
                         mChatAdapter.markMessageSent(userMessage);
                     }
                 };

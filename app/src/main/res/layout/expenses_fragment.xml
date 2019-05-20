@@ -21,7 +21,7 @@
         android:onClick="addNewNoteFunction"
         android:src="@android:drawable/ic_input_add"
         android:tint="@android:color/background_light"
-        app:backgroundTint="#60AFFE"
+        app:backgroundTint="@color/colorAccent"
         app:borderWidth="0dp"
         app:elevation="5dp" />
 

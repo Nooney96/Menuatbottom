@@ -20,6 +20,9 @@ import java.util.List;
 import rossnoonan.menuatbottom.R;
 import rossnoonan.menuatbottom.utils.ImageUtils;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * A simple adapter that displays a list of Users.
  */

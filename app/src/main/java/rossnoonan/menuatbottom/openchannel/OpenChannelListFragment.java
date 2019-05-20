@@ -24,6 +24,8 @@ import rossnoonan.menuatbottom.main.ConnectionManager;
 
 import static android.app.Activity.RESULT_OK;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
 
 public class OpenChannelListFragment extends Fragment {
 

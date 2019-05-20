@@ -3,6 +3,9 @@ package rossnoonan.menuatbottom.utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 public class UrlPreviewInfo {
     private final String mUrl;
     private final String mSiteName;

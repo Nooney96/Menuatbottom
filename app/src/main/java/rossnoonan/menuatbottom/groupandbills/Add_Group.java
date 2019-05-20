@@ -29,7 +29,7 @@ import java.util.Vector;
 import rossnoonan.menuatbottom.MainActivity;
 import rossnoonan.menuatbottom.R;
 
-public class AddGrouptwo extends AppCompatActivity {
+public class Add_Group extends AppCompatActivity {
 
     private static Button btn_go;
     TextView t;
@@ -47,7 +47,7 @@ public class AddGrouptwo extends AppCompatActivity {
     Vector<Integer> vec = new Vector<>();
     int count=0;
     add_adapter adapter;
-    List<additem> niitemlist;
+    List<additem_adapter_fragExspense> niitemlist;
     ArrayAdapter adapter1;
     ListView listView;
     ListView listView1;
@@ -64,6 +64,8 @@ public class AddGrouptwo extends AppCompatActivity {
         opennewwindow();
         listView=(ListView) findViewById(R.id.list_add);
 
+        //check this
+        //onclick listener to open group selected from list view
         listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
@@ -82,7 +84,7 @@ public class AddGrouptwo extends AppCompatActivity {
     public void onBackPressed()
     {
         super.onBackPressed();
-        startActivity(new Intent(AddGrouptwo.this, MainActivity.class));
+        startActivity(new Intent(Add_Group.this, MainActivity.class));
         finish();
 
     }
@@ -94,25 +96,27 @@ public class AddGrouptwo extends AppCompatActivity {
         listView =(ListView) findViewById(R.id.list_add);
         dbgroup.execSQL("CREATE TABLE IF NOT EXISTS Group_details (id INTEGER PRIMARY KEY AUTOINCREMENT ,group_name TEXT NOT NULL, date_go DATE NOT NULL, " + "friend_no INTEGER NOT NULL DEFAULT 0)");
         Cursor c = dbgroup.rawQuery("SELECT * FROM Group_details ORDER BY date_go DESC;", null);
+
         if (c != null) {
             if (c.moveToFirst())
 
                 do {
 
-                    String d4 = c.getString(c.getColumnIndex("group_name"));
-                    final Long d1 = c.getLong((c.getColumnIndex("date_go")));
-                    String d2 = c.getString(c.getColumnIndex("date_go"));
-                    String temp = d4;
-                    niitemlist.add(new additem(d4, d2));
+                    String dgroupname = c.getString(c.getColumnIndex("group_name"));
+                    final Long dyear = c.getLong((c.getColumnIndex("date_go")));
+                    String ddate = c.getString(c.getColumnIndex("date_go"));
+                    String temp = dgroupname;
+                    niitemlist.add(new additem_adapter_fragExspense(dgroupname, ddate));
                     vec.add(1);
                     j++;
                 } while (c.moveToNext());
 
         }
-        adapter = new add_adapter(getApplicationContext(), R.layout.add_text, niitemlist);
+        adapter = new add_adapter(getApplicationContext(), R.layout.add_text_groupinfo, niitemlist);
 
         listView.setAdapter(adapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+
 
         listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
@@ -140,10 +144,11 @@ public class AddGrouptwo extends AppCompatActivity {
                 }
             }
 
+            //Method for using context menu to delete group from database
             @Override
             public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
                 MenuInflater inflater = actionMode.getMenuInflater();
-                inflater.inflate(R.menu.my_context_menu, menu);
+                inflater.inflate(R.menu.delete_menu, menu);
 
                 return true;
             }
@@ -158,6 +163,7 @@ public class AddGrouptwo extends AppCompatActivity {
                 Log.e("1", "enter switch");
 
                 switch (menuItem.getItemId()) {
+                    //used for delete menu
                     case R.id.delete_id:
                         for (int i = vec.size() - 1; i > -1; i--) {
                             if (vec.get(i) == 0) {
@@ -175,6 +181,7 @@ public class AddGrouptwo extends AppCompatActivity {
                                 niitemlist.remove(i);
                             }
                         }
+                        //called to update adapter of changes
                         adapter.notifyDataSetChanged();
                         Toast.makeText(getApplicationContext(), count + " items removed ", Toast.LENGTH_SHORT).show();
                         count = 0;
@@ -194,20 +201,21 @@ public class AddGrouptwo extends AppCompatActivity {
             }
         });
     }
-    //when user clicks on the floating action button
+    //when user clicks on the floating action button opens AddGroupdetails
     public void opennewwindow(){
         fb.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //
-                        Intent intent= new Intent(AddGrouptwo.this,AddGroupDetailsTwo.class);
+                        //Opens new window for intent to Add_Group_Details Two
+                        Intent intent= new Intent(Add_Group.this, Add_Group_Details.class);
                         startActivity(intent);
                         finish();
                     }
                 }
         );
     }
+    //onback press method for user to get back to home screen with backpress
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

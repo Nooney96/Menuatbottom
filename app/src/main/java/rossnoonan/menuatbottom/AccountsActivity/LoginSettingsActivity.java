@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 import rossnoonan.menuatbottom.MainActivity;
 import rossnoonan.menuatbottom.R;
 
-public class MainLoginActivity extends AppCompatActivity {
+public class LoginSettingsActivity extends AppCompatActivity {
 
     private Button btnChangePassword,btncontinuetoapp, btnRemoveUser,
             changePassword, remove, signOut;
@@ -32,7 +32,7 @@ public class MainLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_login);
+        setContentView(R.layout.activity_login_settings);
 
         //get firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -49,7 +49,7 @@ public class MainLoginActivity extends AppCompatActivity {
                 if (user == null) {
                     // user auth state is changed - user is null
                     // launch login activity
-                    startActivity(new Intent(MainLoginActivity.this, LoginActivity.class));
+                    startActivity(new Intent(LoginSettingsActivity.this, LoginActivity.class));
                     finish();
                 }
             }
@@ -103,7 +103,7 @@ public class MainLoginActivity extends AppCompatActivity {
         btncontinuetoapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainLoginActivity.this, MainActivity.class));
+                startActivity(new Intent(LoginSettingsActivity.this, MainActivity.class));
             }
         });
 
@@ -123,11 +123,11 @@ public class MainLoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            Toast.makeText(MainLoginActivity.this, "Password is updated, sign in with new password!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(LoginSettingsActivity.this, "Password is updated, sign in with new password!", Toast.LENGTH_SHORT).show();
                                             signOut();
                                             progressBar.setVisibility(View.GONE);
                                         } else {
-                                            Toast.makeText(MainLoginActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(LoginSettingsActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
                                             progressBar.setVisibility(View.GONE);
                                         }
                                     }
@@ -153,12 +153,12 @@ public class MainLoginActivity extends AppCompatActivity {
                                     if (task.isSuccessful()) {
 
 
-                                        Toast.makeText(MainLoginActivity.this, "Your profile has now been deleted Create a account now", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(MainLoginActivity.this, SignupActivity.class));
+                                        Toast.makeText(LoginSettingsActivity.this, "Your profile has now been deleted Create a account now", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(LoginSettingsActivity.this, SignupActivity.class));
                                         finish();
                                         progressBar.setVisibility(View.GONE);
                                     } else {
-                                        Toast.makeText(MainLoginActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginSettingsActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
@@ -193,7 +193,7 @@ public class MainLoginActivity extends AppCompatActivity {
             if (user == null) {
                 // user auth state is changed - user is null
                 // launch login activity
-                startActivity(new Intent(MainLoginActivity.this, LoginActivity.class));
+                startActivity(new Intent(LoginSettingsActivity.this, LoginActivity.class));
                 finish();
             } else {
                 setDataToView(user);
@@ -217,7 +217,7 @@ public class MainLoginActivity extends AppCompatActivity {
                 if (user == null) {
                     // if the user auth state changes to user is null
                     // then login activity will be launched
-                    startActivity(new Intent(MainLoginActivity.this, LoginActivity.class));
+                    startActivity(new Intent(LoginSettingsActivity.this, LoginActivity.class));
                     finish();
                 }
             }

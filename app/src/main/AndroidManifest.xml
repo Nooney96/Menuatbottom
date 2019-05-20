@@ -37,7 +37,7 @@
         </activity>
 
 
-        <activity android:name=".AccountsActivity.MainLoginActivity" />
+        <activity android:name=".AccountsActivity.LoginSettingsActivity" />
         <activity android:name=".AccountsActivity.SignupActivity" />
         <activity android:name=".AccountsActivity.ResetPasswordActivity" />
         <activity android:name=".AccountsActivity.LoginActivity">
@@ -147,7 +147,7 @@
         </activity>
 
 
-        <activity android:name=".groupandbills.AddGroupDetailsTwo">
+        <activity android:name=".groupandbills.Add_Group_Details">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -162,7 +162,7 @@
 
 
 
-        <activity android:name=".groupandbills.AddGrouptwo">
+        <activity android:name=".groupandbills.Add_Group">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -170,7 +170,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".groupandbills.Update">
+        <activity android:name=".groupandbills.Add_bill">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

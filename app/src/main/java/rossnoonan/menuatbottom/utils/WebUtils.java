@@ -14,6 +14,9 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.regex.Pattern;
 
+//Taking from https://github.com/smilefam/sendbird-syncmanager-android
+//Part of send Bird API
+
 /**
  * A class with static util methods.
  */
